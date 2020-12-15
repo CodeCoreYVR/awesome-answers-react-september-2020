@@ -31,8 +31,19 @@ const AnswerDetails = () => {
   )
 }
 
+const QuestionShowPage = () => { // react component
+  // returns react elements
+  return(
+    <main>
+      <QuestionDetails/>
+      <h2>Answers:</h2>
+      <AnswerDetails/>
+    </main>
+  )
+}
+
 ReactDOM.render(
-  <AnswerDetails />,
+  <QuestionShowPage />,
   document.getElementById('root')
 );
 
