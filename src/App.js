@@ -1,9 +1,13 @@
 import React from 'react';
 import QuestionShowPage from './components/QuestionShowPage';
 
+import './styles/App.css';
+
 const App = () => {
   return(
-    <QuestionShowPage/>
+    <main>
+      <QuestionShowPage/>
+    </main>
   );
 }
 

@@ -5,7 +5,13 @@ const AnswerDetails = (props) => {
   const author = props.author;
   const created_at = props.created_at;
   return(
-    <div>
+    <div
+      style={{
+        backgroundColor: 'whitesmoke',
+        borderRadius: '5px',
+        paddingLeft: '5px'
+      }}
+    >
       <p>{body}</p>
       <p>By { author.full_name }</p>
       <p>
