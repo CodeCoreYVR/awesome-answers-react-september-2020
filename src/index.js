@@ -1,13 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// React Component is a Function or a Class that returns a React Element.
+// React Components must use PascalCase
+const QuestionDetails = () => {
+  return (
+    <div>
+      <h2>What is your favourite colour?</h2>
+      <p>Red, green, blue, magenta, ect.</p>
+      <p>By Jon Snow</p>
+      <p>
+        <small>Seen 10 time(s)</small>*<small>Created 10 days ago</small>*
+        <small>Last edited 2 hours ago</small>
+      </p>
+    </div>
+  );
+};
+
+const AnswerDetails = () => {
+  return(
+    <div>
+      <p>This is my answer's text.</p>
+      <p>By Steve Jobs</p>
+      <p>
+        <strong>Created at:</strong> 1 day ago
+      </p>
+    </div>
+  )
+}
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <AnswerDetails />,
   document.getElementById('root')
 );
 
