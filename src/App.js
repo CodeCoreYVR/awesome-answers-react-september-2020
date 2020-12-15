@@ -1,13 +1,17 @@
 import React from 'react';
 import QuestionShowPage from './components/QuestionShowPage';
+import QuestionIndexPage from './components/QuestionIndexPage';
+
+import questionsData from './questionData';
 
 import './styles/App.css';
 
 const App = () => {
   return(
-    <main>
+    <div>
+      <QuestionIndexPage questions={questionsData}/>
       <QuestionShowPage/>
-    </main>
+    </div>
   );
 }
 
