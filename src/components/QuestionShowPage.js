@@ -14,6 +14,19 @@ class QuestionShowPage extends Component {
     this.state = {
       question: questionData
     }
+
+    this.deleteAnswer = this.deleteAnswer.bind(this);
+  }
+
+  deleteAnswer(id) {
+    this.setState(state => {
+      return {
+        question: {
+          ...state.question,
+          answers: state.question.answers.filter(a => a.id !== id)
+        }
+      }
+    })
   }
 
   render() {
@@ -30,7 +43,7 @@ class QuestionShowPage extends Component {
         <h2>Answers:</h2>
         {/* { AnswerDetails({body: 'blue', author: { full_name: 'bugs bunny'}, created_at: new Date()})} */}
         {/* Because AnswerDetails is just a function that returns a React Element you can render it out with the above syntax as well but this would be considered bad practice. */}
-        <AnswerList answers={this.state.question.answers} />
+        <AnswerList answers={this.state.question.answers} onAnswerDeleteClick={this.deleteAnswer}/>
       </main>
     )
   }

@@ -17,6 +17,9 @@ const AnswerDetails = (props) => {
       <p>
         <strong>Created at:</strong> {created_at.toLocaleString()}
       </p>
+      <button onClick={() => props.onAnswerDeleteClick(props.id)}>
+        Delete
+      </button>
     </div>
   )
 }
