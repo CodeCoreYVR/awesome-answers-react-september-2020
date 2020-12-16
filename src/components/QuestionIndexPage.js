@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NewQuestionForm from './NewQuestionForm';
 
 import questionsData from '../questionData';
 class QuestionIndexPage extends Component {
@@ -9,6 +10,8 @@ class QuestionIndexPage extends Component {
     this.state = {
       questions: questionsData
     }
+
+    this.createQuestion = this.createQuestion.bind(this)
   }
 
   deleteQuestion(id) {
@@ -25,10 +28,25 @@ class QuestionIndexPage extends Component {
     })
   }
 
+  createQuestion(params) {
+    this.setState((state) => {
+      return {
+        questions: [
+          {
+            id: (Math.max(...state.questions.map(q => q.id)) + 1), // get the largest id out of all the question ids then added 1 to it
+            ...params
+          },
+          ...state.questions
+        ]
+      }
+    })
+  }
+
   render() {
     return (
       <main>
         <h1>Questions</h1>
+        <NewQuestionForm onSubmit={this.createQuestion}/>
         <ul style={{ padding: 0, listStyle: 'none'}}>
           {
             this.state.questions.map(question => {
