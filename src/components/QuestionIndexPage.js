@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NewQuestionForm from './NewQuestionForm';
+import _ from 'lodash';
 
 import questionsData from '../questionData';
 class QuestionIndexPage extends Component {
@@ -20,10 +21,11 @@ class QuestionIndexPage extends Component {
     // .setState accepts a callback, with (state, props) as the arguments. State in the arguments is the current state of the component
     
     this.setState((state) => {
+      const stateClone = _.cloneDeep(state);
       // setState must always return an object.
       // this object gets combined with the current state.
       return {
-        questions: state.questions.filter(q => q.id !== id)
+        questions: stateClone.questions.filter(q => q.id !== id) // this will only shallow copy questions ): We'd want to use something like _.deepClone from lodash library to deep copy an object
       }
     })
   }
