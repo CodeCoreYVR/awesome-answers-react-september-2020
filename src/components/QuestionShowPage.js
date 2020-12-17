@@ -15,12 +15,12 @@ class QuestionShowPage extends Component {
     this.state = {
       question: {}
     }
-
+    console.log(props.match.params.id);
     this.deleteAnswer = this.deleteAnswer.bind(this);
   }
 
   componentDidMount() {
-    Question.show(50)
+    Question.show(this.props.match.params.id)
       .then(question => {
         console.log(question);
         this.setState((state) => {

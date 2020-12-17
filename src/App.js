@@ -37,8 +37,7 @@ class App extends Component {
           <Route exact path='/questions'>
             <QuestionIndexPage />
           </Route>
-          <Route path='/questions/50'>
-            <QuestionShowPage />
+          <Route path='/questions/:id' component={QuestionShowPage}>
           </Route>
         </BrowserRouter>
       </div>
