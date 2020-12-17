@@ -16,7 +16,7 @@ const QuestionDetails = ({ title, body, author, view_count, created_at, updated_
     <div>
       <h2>{title}</h2>
       <p>{body}</p>
-      <p>By {author.full_name}</p>
+      <p>By { author ? author.first_name : null }</p>
       <p>
         <small>Seen {view_count} time(s)</small>*<small>Created {created_at.toLocaleString()}</small>*
         <small>Last edited {updated_at.toLocaleString()}</small>

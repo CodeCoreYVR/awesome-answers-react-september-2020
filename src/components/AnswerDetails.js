@@ -13,7 +13,7 @@ const AnswerDetails = (props) => {
       }}
     >
       <p>{body}</p>
-      <p>By { author.full_name }</p>
+      <p>By { author ? author.full_name : null }</p>
       <p>
         <strong>Created at:</strong> {created_at.toLocaleString()}
       </p>

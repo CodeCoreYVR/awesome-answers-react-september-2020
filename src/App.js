@@ -32,9 +32,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <QuestionIndexPage/>
-        <QuestionShowPage/> */}
-        <QuestionIndexPage />
+        <QuestionShowPage />
+        {/* <QuestionIndexPage /> */}
       </div>
     )
   }

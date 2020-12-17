@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import QuestionDetails from './QuestionDetails';
 import AnswerList from './AnswerList';
-import questionData from '../qData';
+import { Question } from '../requests';
+
 class QuestionShowPage extends Component {
   // `this` refers to an instance of QuestionShowPage
   // to access props given to QuestionShowPage we use `this.props`
@@ -12,10 +13,22 @@ class QuestionShowPage extends Component {
     super(props);
 
     this.state = {
-      question: questionData
+      question: {}
     }
 
     this.deleteAnswer = this.deleteAnswer.bind(this);
+  }
+
+  componentDidMount() {
+    Question.show(50)
+      .then(question => {
+        console.log(question);
+        this.setState((state) => {
+          return {
+            question: question
+          }
+        })
+      })
   }
 
   deleteAnswer(id) {
