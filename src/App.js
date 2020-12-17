@@ -4,6 +4,7 @@ import QuestionShowPage from './components/QuestionShowPage';
 import QuestionIndexPage from './components/QuestionIndexPage';
 import QuestionNewPage from './components/QuestionNewPage';
 import CurrentDateTime from './components/CurrentDateTime';
+import Pokemon from './components/Pokemon';
 import Navbar from './components/Navbar';
 import { Session } from './requests';
 
@@ -44,6 +45,9 @@ class App extends Component {
             <Route path='/questions/new' component={QuestionNewPage}>
             </Route>
             <Route path='/questions/:id' component={QuestionShowPage}>
+            </Route>
+            <Route path='/pokemon'>
+              <Pokemon />
             </Route>
           </Switch>
         </BrowserRouter>
