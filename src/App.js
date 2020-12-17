@@ -34,11 +34,7 @@ class App extends Component {
       <div>
         {/* <QuestionIndexPage/>
         <QuestionShowPage/> */}
-        {
-          this.state.clocksCount.map((c, i) => {
-            return <CurrentDateTime key={i} shouldShowTime={true}/>
-          })
-        }
+        <QuestionIndexPage />
       </div>
     )
   }

@@ -1,18 +1,29 @@
 import React, { Component } from 'react';
 import NewQuestionForm from './NewQuestionForm';
 import _ from 'lodash';
+import { Question } from '../requests';
 
-import questionsData from '../questionData';
 class QuestionIndexPage extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      questions: questionsData
+      questions: []
     }
 
     this.createQuestion = this.createQuestion.bind(this)
+  }
+
+  componentDidMount() {
+    Question.index()
+      .then((questions) => {
+        this.setState((state) => {
+          return {
+            questions: questions
+          }
+        })
+      })
   }
 
   deleteQuestion(id) {
