@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import QuestionShowPage from './components/QuestionShowPage';
 import QuestionIndexPage from './components/QuestionIndexPage';
 import CurrentDateTime from './components/CurrentDateTime';
@@ -32,8 +33,14 @@ class App extends Component {
   render() {
     return (
       <div>
-        <QuestionShowPage />
-        {/* <QuestionIndexPage /> */}
+        <BrowserRouter>
+          <Route exact path='/questions'>
+            <QuestionIndexPage />
+          </Route>
+          <Route path='/questions/50'>
+            <QuestionShowPage />
+          </Route>
+        </BrowserRouter>
       </div>
     )
   }
