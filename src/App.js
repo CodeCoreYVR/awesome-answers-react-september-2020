@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import QuestionShowPage from './components/QuestionShowPage';
 import QuestionIndexPage from './components/QuestionIndexPage';
+import QuestionNewPage from './components/QuestionNewPage';
 import CurrentDateTime from './components/CurrentDateTime';
 import Navbar from './components/Navbar';
 import { Session } from './requests';
@@ -40,7 +41,7 @@ class App extends Component {
             <Route exact path='/questions'>
               <QuestionIndexPage />
             </Route>
-            <Route path='/questions/new' render={() => <div>New Question</div>}>
+            <Route path='/questions/new' component={QuestionNewPage}>
             </Route>
             <Route path='/questions/:id' component={QuestionShowPage}>
             </Route>
