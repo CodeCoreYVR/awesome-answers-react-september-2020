@@ -24,24 +24,26 @@ class App extends Component {
   }
 
   componentDidMount() {
-    Session.create({
-      email: 'js@winterfell.gov',
-      password: 'supersecret'
-    })
-    .then(user => {
-      this.setState((state) => {
-        return {
-          user: user
-        }
+    Session.currentUser()
+      .then(user => {
+        console.log(user);
+        this.setState((state) => {
+          return {
+            user: user
+          }
+        })
       })
-    })
   }
 
   handleSubmit(params) {
     // params looks like: { email: 'js@winterfell.gov', password: 'supersecret' }
     console.log(this);
     Session.create(params)
+    .then(() => {
+      return Session.currentUser()
+    })
     .then(user => {
+      console.log('user: ', user);
       this.setState((state) => {
         return {
           user: user
@@ -54,7 +56,7 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-          <Navbar />
+          <Navbar currentUser={this.state.user} />
           <Switch>
             <Route exact path='/questions'>
               <QuestionIndexPage />
