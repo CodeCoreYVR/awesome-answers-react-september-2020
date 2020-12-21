@@ -7,6 +7,7 @@ import CurrentDateTime from './components/CurrentDateTime';
 import Pokemon from './components/Pokemon';
 import Navbar from './components/Navbar';
 import SignInPage from './components/SignInPage';
+import AuthRoute from './components/AuthRoute';
 
 import { Session } from './requests';
 
@@ -61,8 +62,11 @@ class App extends Component {
             <Route exact path='/questions'>
               <QuestionIndexPage />
             </Route>
-            <Route path='/questions/new' component={QuestionNewPage}>
-            </Route>
+            <AuthRoute
+              path='/questions/new'
+              isAuth={this.state.user}
+              component={QuestionNewPage}
+            />
             <Route path='/questions/:id' component={QuestionShowPage}>
             </Route>
             <Route path='/pokemon'>
