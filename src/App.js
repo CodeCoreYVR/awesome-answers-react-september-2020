@@ -68,7 +68,7 @@ class App extends Component {
             <Route path='/pokemon'>
               <Pokemon />
             </Route>
-            <Route path='/sign_in'><SignInPage handleSubmit={this.handleSubmit}/></Route>
+            <Route path='/sign_in' render={(routeProps) => <SignInPage handleSubmit={this.handleSubmit} {...routeProps}/>}/>
           </Switch>
         </BrowserRouter>
       </div>

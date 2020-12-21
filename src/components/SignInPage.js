@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SignInPage = ({ handleSubmit }) => {
+const SignInPage = ({ handleSubmit, history }) => {
 
   function onSubmit(event) {
     event.preventDefault();
@@ -10,6 +10,7 @@ const SignInPage = ({ handleSubmit }) => {
       email: formData.get('email'),
       password: formData.get('password')
     });
+    history.push('/questions')
   }
 
   return(
