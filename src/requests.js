@@ -68,5 +68,11 @@ export const Session = {
       credentials: 'include'
     })
     .then((res) => res.json())
+  },
+  destroy() {
+    return fetch(`${BASE_URL}/sign_out`, {
+      method: 'DELETE',
+      credentials: 'include'
+    }).then((res) => res.json())
   }
 }
