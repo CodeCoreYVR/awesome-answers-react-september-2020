@@ -6,6 +6,8 @@ import QuestionNewPage from './components/QuestionNewPage';
 import CurrentDateTime from './components/CurrentDateTime';
 import Pokemon from './components/Pokemon';
 import Navbar from './components/Navbar';
+import SignInPage from './components/SignInPage';
+
 import { Session } from './requests';
 
 import './styles/App.css';
@@ -17,6 +19,8 @@ class App extends Component {
       clocksCount: [1],
       user: null
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +28,19 @@ class App extends Component {
       email: 'js@winterfell.gov',
       password: 'supersecret'
     })
+    .then(user => {
+      this.setState((state) => {
+        return {
+          user: user
+        }
+      })
+    })
+  }
+
+  handleSubmit(params) {
+    // params looks like: { email: 'js@winterfell.gov', password: 'supersecret' }
+    console.log(this);
+    Session.create(params)
     .then(user => {
       this.setState((state) => {
         return {
@@ -49,6 +66,7 @@ class App extends Component {
             <Route path='/pokemon'>
               <Pokemon />
             </Route>
+            <Route path='/sign_in'><SignInPage handleSubmit={this.handleSubmit}/></Route>
           </Switch>
         </BrowserRouter>
       </div>
