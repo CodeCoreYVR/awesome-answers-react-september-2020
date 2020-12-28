@@ -3,9 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App, { B } from './App';
+import {Counter} from './components/Counter'
 
+// ReactDOM.render(
+//   <App />,
+//   document.getElementById('root')
+// );
 ReactDOM.render(
-  <App />,
+  <Counter count={2}/>,
   document.getElementById('root')
 );
 
