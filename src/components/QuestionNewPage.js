@@ -1,5 +1,5 @@
 import React from 'react';
-import NewQuestionForm from './NewQuestionForm';
+import NewQuestionForm from './NewQuestionForm1';
 import { Question } from '../requests';
 
 const QuestionNewPage = (props) => {

@@ -5,6 +5,12 @@ import React,{useState, useEffect} from 'react';
 // You can use state as many times as you want in a gient component for all the different things you want to track
 // When you are updating a state it will replace the value that was before the update as opposed to how state used to work in the past 
 
+// useEffect
+// This give us an ability of componentDidMount, componentDidUpdate and componentWillUnmount - which are our life cycle methods
+
+// componentDidUpdate- To get an effect of componentDidupdate we pass an optianal arugment of an array with an element of state that we want to track to useEffect(), Which only trigers at the change of that state
+
+
 
 export const Counter=(props)=>{
     // const array=useState(0);
@@ -14,6 +20,19 @@ export const Counter=(props)=>{
     // it returns any array and to make it more user friendly we destructure the returned array like above
     // const increment=()=>setCount(count+1)
     const [text,setText]=useState('');
+    
+    useEffect(()=>{
+        console.log('This should run once')
+    },[])
+
+    useEffect(()=>{
+        console.log('Use effect triggered');
+        document.title=count
+    },[count])
+    useEffect(()=>{
+        console.log('Use effect triggered for text change');
+        
+    },[text])
 
     return(
         <div>

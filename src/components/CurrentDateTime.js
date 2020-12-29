@@ -1,48 +1,21 @@
-import React, { Component } from 'react';
+import React, {useState, useEffect} from 'react';
 
-class CurrentDateTime extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: new Date()
-    }
-    console.log('1: constructor fired');
-  }
+export const CurrentDateTime =(props)=>{
+    const [dateTime,setDateTime]=useState(new Date())
 
-  componentDidMount() {
-    console.log('componentDidMount');
-    // this is called as soon as the component is turned into a DOM node and added to the HTML page
-    this.intervalId = setInterval(() => {
-      this.setState((state) => {
-        return {
-          date: new Date()
+    useEffect(()=>{
+        console.log('Clock Mounted')
+        const intervalID=setInterval(()=>{setDateTime(new Date())},1000)
+        
+        return ()=>{
+            console.log('Clock Umounted');
+
+            clearInterval(intervalID);
+            console.log('Clock Umounted');
         }
-      })
-    }, 1000)
-  }
-
-  componentDidUpdate() {
-    console.log('componentDidUpdate');
-  }
-
-  componentWillUnmount() {
-    console.log('componentWillUnmount');
-    clearInterval(this.intervalId);
-  }
-
-  render() {
-    console.log('render fired');
-    return (
-      <div>
-        {
-          this.props.shouldShowTime ?
-          this.state.date.toLocaleTimeString()
-          :
-          this.state.date.toLocaleDateString()
-        }
-      </div>
+    },[]
+    
     )
-  }
-}
 
-export default CurrentDateTime;
+    return (<div>{dateTime.toLocaleTimeString()}</div>);
+}

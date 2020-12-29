@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NewQuestionForm from './NewQuestionForm';
+import NewQuestionForm from './NewQuestionForm1';
 import _ from 'lodash';
 import { Question } from '../requests';
 
@@ -59,7 +59,7 @@ class QuestionIndexPage extends Component {
     return (
       <main>
         <h1>Questions</h1>
-        <NewQuestionForm onSubmit={this.createQuestion}/>
+        {/*<NewQuestionForm onSubmit={this.createQuestion}/>*/}
         <ul style={{ padding: 0, listStyle: 'none'}}>
           {
             this.state.questions.map(question => {

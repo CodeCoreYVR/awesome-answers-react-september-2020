@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import QuestionShowPage from './components/QuestionShowPage';
 import QuestionIndexPage from './components/QuestionIndexPage';
-import QuestionNewPage from './components/QuestionNewPage';
-import CurrentDateTime from './components/CurrentDateTime';
+// import QuestionNewPage from './components/QuestionNewPage';
+import NewQuestionForm from './components/NewQuestionForm'
+// import CurrentDateTime from './components/CurrentDateTime1';
 import Pokemon from './components/Pokemon';
 import Navbar from './components/Navbar';
 import SignInPage from './components/SignInPage';
 import AuthRoute from './components/AuthRoute';
+import {NotFoundPage} from './components/NotFoundPage';
 
 import { Session } from './requests';
 
@@ -74,17 +76,18 @@ class App extends Component {
             <Route exact path='/questions'>
               <QuestionIndexPage />
             </Route>
-            <AuthRoute
+            <AuthRoute exact
               path='/questions/new'
               isAuth={this.state.user}
-              component={QuestionNewPage}
+              component={NewQuestionForm}
             />
-            <Route path='/questions/:id' component={QuestionShowPage}>
+            <Route exact path='/questions/:id' component={QuestionShowPage}>
             </Route>
-            <Route path='/pokemon'>
+            <Route exact path='/pokemon'>
               <Pokemon />
             </Route>
-            <Route path='/sign_in' render={(routeProps) => <SignInPage handleSubmit={this.handleSubmit} {...routeProps}/>}/>
+            <Route exact path='/sign_in' render={(routeProps) => <SignInPage handleSubmit={this.handleSubmit} {...routeProps}/>}/>
+            <Route component={NotFoundPage} />
           </Switch>
         </BrowserRouter>
       </div>
